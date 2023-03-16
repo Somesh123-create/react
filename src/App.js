@@ -1,22 +1,25 @@
 import './App.css';
+import Employee from './components/Employee';
+import { useState } from 'react';
 
 function App() {
+  const employee = true;
+  const [role, setRole] = useState('dev');
   return (
     <div className="App">
-      <header className="App-header">
+      {employee ?(
+        <>
+          <input type="text" onChange={(e) => {
+              setRole(e.target.value)
 
-        <p>
-          Hello, Somesh
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+          }}/>
+          <Employee name='Somesh' role='Intern' />
+          <Employee name='Yogesh' role={role} />
+
+        </>
+      ) : (
+        <p>You cant see employeees</p>
+      )}
     </div>
   );
 }
